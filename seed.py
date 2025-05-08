@@ -4,25 +4,21 @@ from models import User, Pet, Review, AdoptionApplication
 from config import app, db
 
 with app.app_context():
-    users = []
+    reviews = []
 
-    user1 = User(
-        first_name = 'Alice',  
-        last_name = 'Smith',  
-        email = 'alice@example.com',  
-        telephone = '0712-345-678',  
+    review1 = User(
+        comment = 'Amazing app',
+        user_id = 2
     )
-    user1.password_hash = 'password123'
 
-    user2 = User(
+    review2 = User(
         organization_name = 'Animal Shelter', 
         email = 'animalshelter@example.com',  
         telephone = '0767-812-345',  
     )
-    user2.password_hash = 'password456'
     
-    users.append(user1)
-    users.append(user2)
+    reviews.append(review1)
+    reviews.append(review2)
 
-    db.session.add_all(users)
+    db.session.add_all(reviews)
     db.session.commit()
