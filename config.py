@@ -11,7 +11,7 @@ from dotenv import load_dotenv    # from python-dotenv library
 load_dotenv()   # load env variables
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, methods=["GET", "POST", "PATCH", "DELETE"], allow_headers=["Content-Type", "Accept"])
 app.secret_key = os.getenv('SECRET_KEY')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')   # configure a database connection to the local file app.db
