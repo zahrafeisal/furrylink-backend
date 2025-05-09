@@ -18,7 +18,9 @@ CORS(
     supports_credentials=True,
     methods=["GET", "POST", "PATCH", "DELETE"],
     allow_headers=["Content-Type", "Accept"],
-    origins=['https://furrylink-frontend.vercel.app']
+    origins=[
+            'https://furrylink-frontend.vercel.app'            
+        ]
     )
 
 app.secret_key = os.getenv('SECRET_KEY')
