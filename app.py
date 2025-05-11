@@ -155,7 +155,7 @@ class Pets(Resource):
     def get(self):
         # view all pets
         pets = []  
-        base_url = "/uploads/"
+        base_url = "/opt/render/project/src/uploads"
 
         for pet in Pet.query.all():
             pet_dict = pet.to_dict()
@@ -234,7 +234,7 @@ class Pets(Resource):
 
 class UploadImages(Resource):
     def get(self, filename):
-        return send_from_directory('uploads', filename)
+        return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
 class PetByID(Resource):  
@@ -418,7 +418,7 @@ api.add_resource(Logout, '/logout')   # done
 api.add_resource(Users, '/users')   # done
 api.add_resource(UserByID, '/user/<int:id>') # done
 api.add_resource(Pets, '/pets')    # done
-api.add_resource(UploadImages, '/uploads/<path:filename>')   # done
+api.add_resource(UploadImages, '/opt/render/project/src/uploads/<path:filename>')   # done
 api.add_resource(PetByID, '/pet/<int:id>')  # done
 api.add_resource(Reviews, '/reviews')  # done
 api.add_resource(Applications, '/applications')
