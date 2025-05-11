@@ -396,6 +396,20 @@ class ApplicationByID(Resource):
         application.status = new_status  
         db.session.commit()  
         return make_response(application.to_dict(), 200)
+    
+
+@app.route('/check-uploads-directory')
+def check_uploads_directory():
+    uploads_dir = os.path.join(app.root_path, 'uploads')
+    if os.path.exists(uploads_dir):
+        files = os.listdir(uploads_dir)
+        return jsonify({
+            'exists': True,
+            'files': files,
+            'path': uploads_dir
+        })
+    else:
+        return jsonify({ 'exists': False, 'message': 'Uploads directory does not exist.' })
 
 
 api.add_resource(Login, '/login')   # done
